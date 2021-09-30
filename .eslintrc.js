@@ -1,4 +1,57 @@
 module.exports = {
   root: true,
   extends: '@react-native-community',
+  rules: {
+    // Only allow debugger in development
+    'no-debugger': process.env.PRE_COMMIT ? 'warn' : 'off',
+    // Only allow `console.log` in development
+    'no-unused-vars': 0,
+    'no-console': 0,
+    eqeqeq: 0,
+    'no-console': process.env.PRE_COMMIT
+      ? ['warn', {allow: ['warn', 'error']}]
+      : 'off',
+    'vue/component-name-in-template-casing': [
+      'warning',
+      'PascalCase',
+      {
+        ignores: [
+          'component',
+          'template',
+          'transition',
+          'transition-group',
+          'keep-alive',
+          'slot',
+        ],
+      },
+    ],
+  },
+  overrides: [
+    {
+      files: ['src/**/*', 'tests/unit/**/*', 'tests/e2e/**/*'],
+      excludedFiles: 'app.config.js',
+      parserOptions: {
+        parser: 'babel-eslint',
+        sourceType: 'module',
+      },
+      env: {
+        browser: true,
+      },
+    },
+    {
+      files: ['**/*.unit.js'],
+      parserOptions: {
+        parser: 'babel-eslint',
+        sourceType: 'module',
+      },
+      env: {jest: true},
+      globals: {
+        mount: false,
+        shallowMount: false,
+        shallowMountView: false,
+        createComponentMocks: false,
+        createModuleStore: false,
+      },
+    },
+  ],
 };
