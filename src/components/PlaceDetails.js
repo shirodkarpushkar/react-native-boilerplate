@@ -21,8 +21,8 @@ const PlaceDetails = ({ place, onDelete, onClose }) => {
             color="red"
             onPress={onDelete}
             style={styles.deleteBtn}
-          ></Button>
-          <Button onPress={onClose} title="Close"></Button>
+           />
+          <Button onPress={onClose} title="Close" />
         </View>
       </View>
     </Modal>

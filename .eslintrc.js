@@ -1,30 +1,16 @@
 module.exports = {
   root: true,
-  extends: '@react-native-community',
+  extends: ['@react-native-community', 'prettier', 'prettier/standard'],
   rules: {
     // Only allow debugger in development
     'no-debugger': process.env.PRE_COMMIT ? 'warn' : 'off',
     // Only allow `console.log` in development
     'no-unused-vars': 0,
-    'no-console': 0,
     eqeqeq: 0,
     'no-console': process.env.PRE_COMMIT
       ? ['warn', {allow: ['warn', 'error']}]
       : 'off',
-    'vue/component-name-in-template-casing': [
-      'warning',
-      'PascalCase',
-      {
-        ignores: [
-          'component',
-          'template',
-          'transition',
-          'transition-group',
-          'keep-alive',
-          'slot',
-        ],
-      },
-    ],
+    'prettier/prettier': 0,
   },
   overrides: [
     {
