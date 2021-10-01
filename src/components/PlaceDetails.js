@@ -1,7 +1,15 @@
-import React from "react";
-import { Modal, View, Button, Image, Text, StyleSheet } from "react-native";
-
-const PlaceDetails = ({ place, onDelete, onClose }) => {
+import React from 'react';
+import {
+  Modal,
+  View,
+  Button,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+const PlaceDetails = ({place, onDelete, onClose}) => {
   let content = null;
   if (place) {
     content = (
@@ -21,7 +29,10 @@ const PlaceDetails = ({ place, onDelete, onClose }) => {
             color="red"
             onPress={onDelete}
             style={styles.deleteBtn}
-           />
+          />
+          <TouchableOpacity>
+            <Icon size={30} name="ios-trash" color="red" />
+          </TouchableOpacity>
           <Button onPress={onClose} title="Close" />
         </View>
       </View>
@@ -30,22 +41,21 @@ const PlaceDetails = ({ place, onDelete, onClose }) => {
 };
 const styles = StyleSheet.create({
   content: {
-    backgroundColor: "#eee",
+    backgroundColor: '#eee',
   },
   image: {
     margin: 5,
-   
   },
   buttons: {
-    display: "flex",
-    flexDirection: "column",
+    display: 'flex',
+    flexDirection: 'column',
   },
   deleteBtn: {
     marginRight: 10,
   },
   modalContainer: {
     margin: 10,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     // width: "100%",
     // height: "100%",
   },
