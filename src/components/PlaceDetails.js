@@ -34,8 +34,7 @@ const styles = StyleSheet.create({
   },
   image: {
     margin: 5,
-    width: 90,
-    height: 90,
+   
   },
   buttons: {
     display: "flex",
