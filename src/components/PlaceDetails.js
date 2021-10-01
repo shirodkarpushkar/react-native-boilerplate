@@ -24,14 +24,10 @@ const PlaceDetails = ({place, onDelete, onClose}) => {
       <View style={styles.modalContainer}>
         <View>{content}</View>
         <View style={styles.buttons}>
-          <Button
-            title="Delete"
-            color="red"
-            onPress={onDelete}
-            style={styles.deleteBtn}
-          />
-          <TouchableOpacity>
-            <Icon size={30} name="ios-trash" color="red" />
+          <TouchableOpacity onPress={onDelete}>
+            <View style={styles.deleteBtn}>
+              <Icon size={30} name="ios-trash" color="red" />
+            </View>
           </TouchableOpacity>
           <Button onPress={onClose} title="Close" />
         </View>
@@ -51,7 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   deleteBtn: {
-    marginRight: 10,
+    alignItems: "center",
   },
   modalContainer: {
     margin: 10,
