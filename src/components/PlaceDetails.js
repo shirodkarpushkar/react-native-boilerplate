@@ -15,7 +15,7 @@ const PlaceDetails = ({place, onDelete, onClose}) => {
     content = (
       <View style={styles.content}>
         <Image source={place.src} style={styles.image} />
-        <Text>Place: {place.value}</Text>
+        <Text style={styles.text}>Place: {place.value}</Text>
       </View>
     );
   }
@@ -38,16 +38,26 @@ const PlaceDetails = ({place, onDelete, onClose}) => {
 const styles = StyleSheet.create({
   content: {
     backgroundColor: '#eee',
+    fontFamily: 'OpenSans-Bold',
+  },
+  text: {
+    fontSize: 15,
+    fontFamily: 'OpenSans-Bold',
+    textAlign: 'center',
+    margin: 5,
   },
   image: {
     margin: 5,
+    
+    display: 'flex',
+    justifyContent: 'center',
   },
   buttons: {
     display: 'flex',
     flexDirection: 'column',
   },
   deleteBtn: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   modalContainer: {
     margin: 10,

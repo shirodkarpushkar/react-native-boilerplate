@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,12 +10,16 @@ import {
 import ListItem from './src/components/ListItem/ListItem';
 import placeImg from './src/assets/sus3.jpg';
 import PlaceDetails from './src/components/PlaceDetails';
+
+
+
 export default class App extends React.Component {
   state = {
     placeName: '',
     places: [],
     place: null,
   };
+
 
   onPlaceChange = value => {
     this.setState({
@@ -58,6 +61,7 @@ export default class App extends React.Component {
   };
 
   render() {
+   
     const {places} = this.state;
     const placesList = (
       <FlatList
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     height: 35,
     borderBottomColor: '#eee',
+    fontFamily: 'OpenSans-Regular',
   },
 
   formgroup: {
@@ -121,9 +126,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    fontFamily: 'OpenSans-Regular',
   },
   button: {
     flex: 1,
+    fontFamily: 'OpenSans-Bold',
   },
   listContainer: {
     width: '100%',
