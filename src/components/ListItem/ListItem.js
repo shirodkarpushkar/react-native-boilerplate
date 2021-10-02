@@ -5,7 +5,7 @@ const listItem = props => (
   <TouchableOpacity onPress={props.onPress}>
     <View style={styles.listItem}>
       <Image source={props.src} style={styles.image} />
-      <Text>{props.placeName}</Text>
+      <Text style={styles.text}>{props.placeName}</Text>
     </View>
   </TouchableOpacity>
 );
@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
     margin: 8,
     width: 30,
     height: 30,
+  },
+  text: {
+    fontFamily: 'OpenSans-Bold',
   },
 });
 

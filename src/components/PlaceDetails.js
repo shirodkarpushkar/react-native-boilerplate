@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
   },
   image: {
     margin: 5,
-    
-    display: 'flex',
-    justifyContent: 'center',
+    textAlign:"center",
+    justifyContent:"center",
+    alignItems: 'center',
   },
   buttons: {
     display: 'flex',
