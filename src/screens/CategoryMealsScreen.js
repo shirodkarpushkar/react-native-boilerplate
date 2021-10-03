@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
-import {CATEGORIES} from '../data/dummy-data'
+import {CATEGORIES} from '../data/dummy-data';
 const CategoriesMealsScreen = props => {
-  
-  const {categoryId}  =props.route.params
+  const {categoryId} = props.route.params;
   const category = CATEGORIES.find(el => el.id === categoryId);
+  props.navigation.setOptions({title: category.title});
   return (
     <View style={styles.screen}>
       <Text>The Categories Meals Screen</Text>
