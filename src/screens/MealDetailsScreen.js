@@ -3,9 +3,12 @@ import {View, Text, ScrollView, StyleSheet, Image} from 'react-native';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import {MEALS} from '../data/dummy-data';
 import HeaderButton from '../components/HeaderButton';
+import { useSelector } from 'react-redux';
+
 const MealDetailsScreen = props => {
-  const {mealId} = props.route.params;
-  const meal = MEALS.find(el => el.id === mealId);
+  const { mealId } = props.route.params;
+  const availableMeals = useSelector(state => state.meals.favoriteMeals);
+  const meal = availableMeals.find(el => el.id === mealId);
   useEffect(() => {
     props.navigation.setOptions({
       title: meal.title,

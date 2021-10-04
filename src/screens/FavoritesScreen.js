@@ -1,44 +1,51 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, ImageBackground,FlatList} from 'react-native';
-import { MEALS} from '../data/dummy-data';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+  FlatList,
+} from 'react-native';
+import {useSelector} from 'react-redux';
+import {MEALS} from '../data/dummy-data';
 
 const FavoritesScreen = props => {
-  const meals = MEALS.filter(el => el.id == 'm1' || el.id == 'm2');
+  const meals = useSelector(state => state.meals.favoriteMeals);
+  const renderMealItem = ({item}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => routeTo(props, item)}
+        style={styles.mealItem}>
+        <View>
+          <View style={{...styles.mealRow, ...styles.mealHeader}}>
+            <ImageBackground
+              source={{uri: item.imageURL}}
+              style={styles.bgImage}>
+              <Text style={styles.title} numberOfLines={1}>
+                {item.title}
+              </Text>
+            </ImageBackground>
+          </View>
+          <View style={{...styles.mealRow, ...styles.mealDetails}}>
+            <Text>{item.duration}m</Text>
+            <Text>{item.complexity.toUpperCase()}</Text>
+            <Text>{item.affordability.toUpperCase()}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
 
-   const renderMealItem = ({item}) => {
-     return (
-       <TouchableOpacity
-         onPress={() => routeTo(props, item)}
-         style={styles.mealItem}>
-         <View>
-           <View style={{...styles.mealRow, ...styles.mealHeader}}>
-             <ImageBackground
-               source={{uri: item.imageURL}}
-               style={styles.bgImage}>
-               <Text style={styles.title} numberOfLines={1}>
-                 {item.title}
-               </Text>
-             </ImageBackground>
-           </View>
-           <View style={{...styles.mealRow, ...styles.mealDetails}}>
-             <Text>{item.duration}m</Text>
-             <Text>{item.complexity.toUpperCase()}</Text>
-             <Text>{item.affordability.toUpperCase()}</Text>
-           </View>
-         </View>
-       </TouchableOpacity>
-     );
-   };
-
-   return (
-     <View style={styles.screen}>
-       <FlatList
-         data={meals}
-         renderItem={renderMealItem}
-         style={{width: styles.mealItem.width}}
-       />
-     </View>
-   );
+  return (
+    <View style={styles.screen}>
+      <FlatList
+        data={meals}
+        renderItem={renderMealItem}
+        style={{width: styles.mealItem.width}}
+      />
+    </View>
+  );
 };
 const routeTo = (props, item) => {
   props.navigation.navigate('MealDetails', {
