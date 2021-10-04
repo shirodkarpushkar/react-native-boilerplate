@@ -38,6 +38,14 @@ const MealsNavigator = () => {
     </Stack.Navigator>
   );
 };
+const FavNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Favorites" component={FavoritesScreen} />
+      <Stack.Screen name="MealDetails" component={MealDetailsScreen} />
+    </Stack.Navigator>
+  );
+};
 const MealsTabNavigator = () => {
   return (
     <NavigationContainer>
@@ -49,7 +57,6 @@ const MealsTabNavigator = () => {
           name="Meals"
           component={MealsNavigator}
           options={{
-            
             tabBarIcon: tabInfo => {
               return (
                 <Icon name="ios-restaurant" size={25} color={tabInfo.color} />
@@ -59,17 +66,11 @@ const MealsTabNavigator = () => {
         />
         <Tab.Screen
           name="Favorites"
-          component={FavoritesScreen}
+          component={FavNavigator}
           options={{
-            title:"Favorites !",
+            title: 'Favorites !',
             tabBarIcon: tabInfo => {
-              return (
-                <Icon
-                  name="ios-star"
-                  size={25}
-                  color={tabInfo.color}
-                />
-              );
+              return <Icon name="ios-star" size={25} color={tabInfo.color} />;
             },
           }}
         />
