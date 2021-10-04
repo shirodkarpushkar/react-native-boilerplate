@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   mealDetailsText: {
-    fontFamily:"OpenSans"
+    fontFamily: 'OpenSans-Regular',
   },
   mealContainer: {},
   bgImage: {
