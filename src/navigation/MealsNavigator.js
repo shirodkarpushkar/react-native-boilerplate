@@ -23,6 +23,9 @@ const defaultScreenOptions = {
   headerStyle: {
     backgroundColor: Colors.primaryColor,
   },
+  headerTitleStyle: {
+    fontFamily:"OpenSans-Bold"
+  },
   headerTintColor: '#fff',
 };
 const MealsNavigator = () => {
@@ -67,6 +70,9 @@ const MealsTabNavigator = () => {
     <Tab.Navigator
       tabBarOptions={{
         activeTintColor: Colors.accentColor,
+        labelStyle: {
+          fontFamily: 'OpenSans-Bold',
+        },
       }}>
       <Tab.Screen
         name="Meals"
@@ -105,7 +111,7 @@ const DrawerNavigator = () => {
         }}>
         <Drawer.Screen
           name="MealsTab"
-          options={{title: 'Categories'}}
+          options={{title: 'Meals'}}
           component={MealsTabNavigator}
         />
         <Drawer.Screen name="Filters" component={FiltersNavigator} />

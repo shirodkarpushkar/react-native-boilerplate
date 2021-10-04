@@ -32,9 +32,13 @@ const CategoriesMealsScreen = props => {
             </ImageBackground>
           </View>
           <View style={{...styles.mealRow, ...styles.mealDetails}}>
-            <Text>{item.duration}m</Text>
-            <Text>{item.complexity.toUpperCase()}</Text>
-            <Text>{item.affordability.toUpperCase()}</Text>
+            <Text style={styles.mealDetailsText}>{item.duration}m</Text>
+            <Text style={styles.mealDetailsText}>
+              {item.complexity.toUpperCase()}
+            </Text>
+            <Text style={styles.mealDetailsText}>
+              {item.affordability.toUpperCase()}
+            </Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -84,6 +88,9 @@ const styles = StyleSheet.create({
     height: '15%',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  mealDetailsText: {
+    fontFamily:"OpenSans"
   },
   mealContainer: {},
   bgImage: {
