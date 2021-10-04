@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -12,11 +12,15 @@ import {CATEGORIES, MEALS} from '../data/dummy-data';
 const CategoriesMealsScreen = props => {
   const {categoryId} = props.route.params;
   const category = CATEGORIES.find(el => el.id === categoryId);
-  props.navigation.setOptions({title: category.title});
+  useEffect(() => {
+    props.navigation.setOptions({title: category.title});
+  });
   const meals = MEALS.filter(el => el.categoryIds.indexOf(categoryId) >= 0);
   const renderMealItem = ({item}) => {
     return (
-      <TouchableOpacity onPress={() => routeTo(props,item)} style={styles.mealItem}>
+      <TouchableOpacity
+        onPress={() => routeTo(props, item)}
+        style={styles.mealItem}>
         <View>
           <View style={{...styles.mealRow, ...styles.mealHeader}}>
             <ImageBackground

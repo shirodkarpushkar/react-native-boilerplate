@@ -44,7 +44,7 @@ const MealsNavigator = () => {
 };
 const FavNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={defaultScreenOptions}>
       <Stack.Screen
         name="Favorites"
         options={{title: 'Your Favorites'}}
@@ -56,7 +56,7 @@ const FavNavigator = () => {
 };
 const FiltersNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={defaultScreenOptions}>
       <Stack.Screen name="Filters" component={FiltersScreen} />
     </Stack.Navigator>
   );

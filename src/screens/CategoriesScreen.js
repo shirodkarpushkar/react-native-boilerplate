@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -14,13 +14,20 @@ import HeaderButton from '../components/HeaderButton';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 
 const CategoriesScreen = props => {
-  props.navigation.setOptions({
-    headerLeft: () => (
-      <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item title="Favorite" iconName="ios-menu" onPress={() => props.navigation.toggleDrawer()} />
-      </HeaderButtons>
-    ),
-  });
+  useEffect(() => {
+    props.navigation.setOptions({
+      headerLeft: () => (
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item
+            title="drawer"
+            iconName="ios-menu"
+            onPress={() => props.navigation.toggleDrawer()}
+          />
+        </HeaderButtons>
+      ),
+    });
+  })
+  
   const renderGridItem = ({item}) => {
     return (
       <TouchableOpacity
