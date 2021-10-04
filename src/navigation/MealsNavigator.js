@@ -19,18 +19,22 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+const defaultScreenOptions = {
+  headerStyle: {
+    backgroundColor: Colors.primaryColor,
+  },
+  headerTintColor: '#fff',
+};
 const MealsNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Categories">
+    <Stack.Navigator
+      initialRouteName="Categories"
+      screenOptions={defaultScreenOptions}>
       <Stack.Screen
         name="Categories"
         component={CategoriesScreen}
         options={{
           title: 'Meal Categories',
-          headerStyle: {
-            backgroundColor: Colors.primaryColor,
-          },
-          headerTintColor: '#fff',
         }}
       />
       <Stack.Screen name="CategoryMeals" component={CategoryMealsScreen} />

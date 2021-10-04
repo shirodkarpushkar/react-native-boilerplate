@@ -6,15 +6,25 @@ import {
   Button,
   FlatList,
   TouchableOpacity,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
 } from 'react-native';
 import {CATEGORIES} from '../data/dummy-data';
 import Colors from '../constants/Colors';
+import HeaderButton from '../components/HeaderButton';
+import {HeaderButtons, Item} from 'react-navigation-header-buttons';
+
 const CategoriesScreen = props => {
+  props.navigation.setOptions({
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item title="Favorite" iconName="ios-menu" onPress={() => {}} />
+      </HeaderButtons>
+    ),
+  });
   const renderGridItem = ({item}) => {
     return (
       <TouchableOpacity
-        style={{...styles.gridItem,backgroundColor:item.color}}
+        style={{...styles.gridItem, backgroundColor: item.color}}
         onPress={() => routeTo(props, item)}>
         <View>
           <Text style={styles.itemTitle}> {item.title} </Text>
@@ -55,9 +65,9 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   itemTitle: {
-    fontFamily: "OpenSans-Bold",
+    fontFamily: 'OpenSans-Bold',
     fontSize: 20,
-    textAlign:"right"
+    textAlign: 'right',
   },
 });
 export default CategoriesScreen;
