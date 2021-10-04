@@ -96,8 +96,18 @@ const MealsTabNavigator = () => {
 const DrawerNavigator = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="MealsTab" component={MealsTabNavigator} />
+      <Drawer.Navigator
+        drawerContentOptions={{
+          activeTintColor: Colors.accentColor,
+          labelStyle: {
+            fontFamily: 'OpenSans-Bold',
+          },
+        }}>
+        <Drawer.Screen
+          name="MealsTab"
+          options={{title: 'Categories'}}
+          component={MealsTabNavigator}
+        />
         <Drawer.Screen name="Filters" component={FiltersNavigator} />
       </Drawer.Navigator>
     </NavigationContainer>
