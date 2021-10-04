@@ -7,13 +7,27 @@ import {
   Button,
   FlatList,
 } from 'react-native';
-import { enableScreens } from 'react-native-screens';
 
+import {enableScreens} from 'react-native-screens';
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux';
+
+import mealsReducer from './src/store/reducers/meals';
 import MealsNavigator from './src/navigation/MealsNavigator';
+
+const rootReducer = combineReducers({
+  meals: mealsReducer,
+});
+const store = createStore(rootReducer);
+
 enableScreens();
 export default class App extends React.Component {
   render() {
-    return <MealsNavigator />;
+    return (
+      <Provider store={store}>
+        <MealsNavigator />
+      </Provider>
+    );
   }
 }
 
