@@ -7,10 +7,10 @@ import {
   Button,
   FlatList,
 } from 'react-native';
-
+import { enableScreens } from 'react-native-screens';
 
 import MealsNavigator from './src/navigation/MealsNavigator';
-
+enableScreens();
 export default class App extends React.Component {
   render() {
     return <MealsNavigator />;
