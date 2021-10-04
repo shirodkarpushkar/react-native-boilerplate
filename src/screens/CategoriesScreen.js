@@ -17,7 +17,7 @@ const CategoriesScreen = props => {
   props.navigation.setOptions({
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item title="Favorite" iconName="ios-menu" onPress={() => {}} />
+        <Item title="Favorite" iconName="ios-menu" onPress={() => props.navigation.toggleDrawer()} />
       </HeaderButtons>
     ),
   });
