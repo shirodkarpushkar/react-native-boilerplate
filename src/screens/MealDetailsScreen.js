@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 const MealDetailsScreen = props => {
   const { mealId } = props.route.params;
-  const availableMeals = useSelector(state => state.meals.favoriteMeals);
+  const availableMeals = useSelector(state => state.meals.meals);
   const meal = availableMeals.find(el => el.id === mealId);
   useEffect(() => {
     props.navigation.setOptions({
