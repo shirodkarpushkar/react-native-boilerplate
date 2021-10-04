@@ -41,7 +41,7 @@ const MealsNavigator = () => {
 const FavNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Favorites" component={FavoritesScreen} />
+      <Stack.Screen name="Favorites" options={{title:'Your Favorites'}} component={FavoritesScreen} />
       <Stack.Screen name="MealDetails" component={MealDetailsScreen} />
     </Stack.Navigator>
   );
