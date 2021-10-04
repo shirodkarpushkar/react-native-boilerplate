@@ -32,6 +32,15 @@ const FiltersScreen = props => {
           />
         </HeaderButtons>
       ),
+      headerRight: () => (
+        <HeaderButtons HeaderButtonComponent={HeaderButton}>
+          <Item
+            title="save"
+            iconName="ios-save"
+            onPress={() => console.log('Saving')}
+          />
+        </HeaderButtons>
+      ),
     });
   });
   return (
