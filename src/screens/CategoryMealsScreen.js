@@ -16,7 +16,7 @@ const CategoriesMealsScreen = props => {
   const meals = MEALS.filter(el => el.categoryIds.indexOf(categoryId) >= 0);
   const renderMealItem = ({item}) => {
     return (
-      <TouchableOpacity onPress={() => {}} style={styles.mealItem}>
+      <TouchableOpacity onPress={() => routeTo(props,item)} style={styles.mealItem}>
         <View>
           <View style={{...styles.mealRow, ...styles.mealHeader}}>
             <ImageBackground
@@ -47,8 +47,11 @@ const CategoriesMealsScreen = props => {
     </View>
   );
 };
-const routeTo = props => {
-  props.navigation.navigate('MealDetails');
+
+const routeTo = (props, item) => {
+  props.navigation.navigate('MealDetails', {
+    mealId: item.id,
+  });
 };
 
 const styles = StyleSheet.create({
