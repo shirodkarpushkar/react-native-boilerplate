@@ -12,6 +12,15 @@ import {MEALS} from '../data/dummy-data';
 
 const FavoritesScreen = props => {
   const meals = useSelector(state => state.meals.favoriteMeals);
+  if (!meals.length) {
+    return (
+      <View style={styles.screen}>
+        <Text style={styles.text}>No favorite meals found. Start adding some</Text>
+      </View>
+    );
+  }
+
+
   const renderMealItem = ({item}) => {
     return (
       <TouchableOpacity
@@ -93,6 +102,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
     paddingVertical: 5,
     paddingHorizontal: 12,
+  },
+  text: {
+    fontFamily: 'OpenSans-Regular',
+    fontSize: 15,
   },
 });
 export default FavoritesScreen;
