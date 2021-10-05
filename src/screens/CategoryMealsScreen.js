@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import {CATEGORIES, MEALS} from '../data/dummy-data';
 const CategoriesMealsScreen = props => {
   const {categoryId} = props.route.params;
@@ -16,10 +16,20 @@ const CategoriesMealsScreen = props => {
   useEffect(() => {
     props.navigation.setOptions({title: category.title});
   });
-  const availableMeals = useSelector((state)=>state.meals.filteredMeals)
+  const availableMeals = useSelector(state => state.meals.filteredMeals);
   const meals = availableMeals.filter(
     el => el.categoryIds.indexOf(categoryId) >= 0
   );
+  if (!meals.length) {
+    return (
+      <View style={styles.screen}>
+        <Text style={styles.mealDetailsText}>
+          No meals found. Please check your filters.
+        </Text>
+      </View>
+    );
+  }
+
   const renderMealItem = ({item}) => {
     return (
       <TouchableOpacity
