@@ -3,10 +3,12 @@ import {View, Text, StyleSheet, Switch} from 'react-native';
 import HeaderButton from '../components/HeaderButton';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import Colors from '../constants/Colors';
+import {setFilters} from '../store/actions/meals';
+import {useDispatch} from 'react-redux';
 
 const FilterSwitch = props => (
   <View style={styles.filterContainer}>
-    <Text> { props.label}</Text>
+    <Text> {props.label}</Text>
     <Switch
       trackColor={{true: Colors.primaryColor}}
       thumbColor={Colors.primaryColor}
@@ -21,6 +23,17 @@ const FiltersScreen = props => {
   const [isLactoseFree, setIsLactoseFree] = useState(false);
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
+  const dispatch = useDispatch();
+
+  const saveFilters = () => {
+    const filters = {
+      isGlutenFree,
+      isLactoseFree,
+      isVegan,
+      isVegetarian,
+    };
+    dispatch(setFilters(filters));
+  };
   useEffect(() => {
     props.navigation.setOptions({
       headerLeft: () => (
@@ -37,7 +50,7 @@ const FiltersScreen = props => {
           <Item
             title="save"
             iconName="ios-save"
-            onPress={() => console.log('Saving')}
+            onPress={() => saveFilters()}
           />
         </HeaderButtons>
       ),
@@ -94,7 +107,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '80%',
-    marginVertical:10
+    marginVertical: 10,
   },
 });
 export default FiltersScreen;
