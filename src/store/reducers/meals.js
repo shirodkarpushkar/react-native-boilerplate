@@ -6,7 +6,6 @@ const initState = {
   favoriteMeals: [],
 };
 const mealsReducer = (state = initState, action) => {
-console.log("🚀 ~ file: meals.js ~ line 9 ~ mealsReducer ~ action", action)
   switch (action.type) {
     case TOGGLE_FAVORITE:
       const existingIndex = state.favoriteMeals.findIndex(

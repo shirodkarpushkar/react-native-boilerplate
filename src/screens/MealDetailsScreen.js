@@ -13,8 +13,11 @@ const MealDetailsScreen = props => {
   const dispatch = useDispatch();
   const toggleFavoriteHandler = () => {
     dispatch(toggleFavorite(meal.id));
-    console.log('marking favorite');
+    console.log('toggle favorite');
   };
+  const favorites = useSelector(state => state.meals.favoriteMeals);
+  const isFavorite = favorites.some(el => el.id === meal.id);
+  const favIcon = isFavorite ? 'ios-star' : 'ios-star-outline';
 
   useEffect(() => {
     props.navigation.setOptions({
@@ -23,7 +26,7 @@ const MealDetailsScreen = props => {
         <HeaderButtons HeaderButtonComponent={HeaderButton}>
           <Item
             title="Favorite"
-            iconName="ios-star-outline"
+            iconName={favIcon}
             onPress={() => toggleFavoriteHandler()}
           />
         </HeaderButtons>
